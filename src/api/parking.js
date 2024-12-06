@@ -43,14 +43,3 @@ export const fetchCar = async (ticket) => {
         throw error;
     }
 };
-
-// Add a parking lot
-export const addParkingLot = async (parkingLot) => {
-    try {
-        const response = await instance.post('/parking', parkingLot);
-        return response.data;
-    } catch (error) {
-        console.error('Error adding parking lot:', error);
-        throw error;
-    }
-};
