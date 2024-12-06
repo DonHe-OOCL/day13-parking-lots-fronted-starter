@@ -1,13 +1,14 @@
+// src/App.js
+import React from 'react';
 import './App.css';
-import React from "react";
+import ParkingLot from './components/ParkingLot';
 
-function App() {
-
+const App = () => {
     return (
         <div className="App">
-
+            <ParkingLot />
         </div>
     );
-}
+};
 
 export default App;
