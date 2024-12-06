@@ -19,7 +19,7 @@ const ParkingLotSlot = () => {
                 {rows.map((row, rowIndex) => (
                     <tr key={rowIndex}>
                         {row.map((car, colIndex) => (
-                            <td key={colIndex} style={{ border: '1px solid black', width: '30px', height: '30px', textAlign: 'center' }}>
+                            <td key={colIndex} style={{ border: '1px solid black', width: '100px', height: '50px', textAlign: 'center' }}>
                                 {car ? <CarSlot plateNumber={car} /> : ''}
                             </td>
                         ))}
