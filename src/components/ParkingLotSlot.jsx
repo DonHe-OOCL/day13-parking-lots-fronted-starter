@@ -1,13 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import CarSlot from './CarSlot';
+import { ParkingContext } from '../context/ParkingContext';
 import './css/ParkingLotSlot.css';
 
 const ParkingLotSlot = () => {
-    const parkingLots = [
-        { name: 'The Plaza Park', capacity: 9, cars: ['AB-1123', 'DE-1456', null, null, null, null, null, null, null] },
-        { name: 'City Mall Garage', capacity: 12, cars: ['GH-1789', null, 'JK-1012', null, null, null, 'MN-9345', null, null, null, null, null] },
-        { name: 'Office Tower Parking', capacity: 9, cars: [null, null, null, null, null, null, null, null, null] }
-    ];
+    const { state } = useContext(ParkingContext);
+    const { parkingLots } = state;
 
     const renderTable = (cars, columns) => {
         const rows = [];
@@ -35,9 +33,13 @@ const ParkingLotSlot = () => {
         <div className="parking-lot-container">
             {parkingLots.map((lot, index) => {
                 const columns = Math.ceil(Math.sqrt(lot.capacity));
+                const cars = Array(lot.capacity).fill(null);
+                lot.tickets.forEach(ticket => {
+                    cars[ticket.position - 1] = ticket.plateNumber;
+                });
                 return (
                     <div key={index} className="parking-lot">
-                        {renderTable(lot.cars, columns)}
+                        {renderTable(cars, columns)}
                         <div>{lot.name}</div>
                     </div>
                 );
