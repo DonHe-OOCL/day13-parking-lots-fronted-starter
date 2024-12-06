@@ -24,13 +24,6 @@ instance.interceptors.response.use(
         return response;
     },
     (error) => {
-        if (error.response && error.response.status === 404) {
-            alert('Not found: The requested resource was not found.');
-        }
-        if (error.response && error.response.status === 500) {
-            alert('Server Error: An unexpected error occurred on the server.');
-        }
-        alert('Response Error:' + error);
         return Promise.reject(error);
     }
 );
