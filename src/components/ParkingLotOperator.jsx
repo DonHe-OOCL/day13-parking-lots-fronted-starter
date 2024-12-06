@@ -13,7 +13,7 @@ const ParkingLotOperator = () => {
     };
 
     return (
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '10px' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px', padding: '10px' }}>
             <div style={{ padding: '5px' }}>
                 <label>
                     Plate Number:

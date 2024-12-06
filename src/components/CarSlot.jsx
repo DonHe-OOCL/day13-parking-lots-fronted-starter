@@ -1,18 +1,9 @@
 import React from 'react';
+import './css/CarSlot.css';
 
 const CarSlot = ({ plateNumber }) => {
     return (
-        <div style={{
-            backgroundColor: plateNumber ? '#b0f2b8' : '#fff',
-            borderRadius: '5px',
-            width: '100%',
-            height: '100%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            border: '1px solid black',
-            whiteSpace: 'nowrap'
-        }}>
+        <div className={`car-slot ${plateNumber ? 'occupied' : 'empty'}`}>
             {plateNumber}
         </div>
     );
