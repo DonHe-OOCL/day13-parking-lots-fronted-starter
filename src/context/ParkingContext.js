@@ -16,6 +16,15 @@ const parkingReducer = (state, action) => {
                 return lot;
             });
             return { ...state, parkingLots: updatedParkingLots };
+        case 'FETCH_CAR':
+            const parkingLotsAfterFetch = state.parkingLots.map(lot => {
+                if (lot.id === action.payload.parkingLotId) {
+                    const updatedTickets = lot.tickets.filter(ticket => ticket.id !== action.payload.id);
+                    return { ...lot, tickets: updatedTickets };
+                }
+                return lot;
+            });
+            return { ...state, parkingLots: parkingLotsAfterFetch };
         default:
             return state;
     }

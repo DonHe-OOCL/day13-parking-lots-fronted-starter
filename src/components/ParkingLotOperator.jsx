@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { getParkingStrategy, parkCar } from '../api/parking';
+import { getParkingStrategy, parkCar, fetchCar } from '../api/parking';
 import { ParkingContext } from '../context/ParkingContext';
 import './css/ParkingLotOperator.css';
 
@@ -38,8 +38,20 @@ const ParkingLotOperator = () => {
         }
     };
 
-    const handleFetch = () => {
-        console.log(`Plate Number: ${plateNumber}`);
+    const handleFetch = async () => {
+        const plateNumberPattern = /^[A-Z]{2}-\d{4}$/;
+        if (!plateNumberPattern.test(plateNumber)) {
+            alert('Invalid plate number format. (e.g., AB-1234).');
+            setPlateNumber('');
+            return;
+        }
+
+        try {
+            const response = await fetchCar({ plateNumber });
+            dispatch({ type: 'FETCH_CAR', payload: response });
+        } catch (error) {
+            console.error('Error fetching car:', error);
+        }
     };
 
     return (
