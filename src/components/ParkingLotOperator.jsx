@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { getParkingStrategy } from '../api/parking';
+import React, { useState, useEffect, useContext } from 'react';
+import { getParkingStrategy, parkCar } from '../api/parking';
+import { ParkingContext } from '../context/ParkingContext';
 import './css/ParkingLotOperator.css';
 
 const ParkingLotOperator = () => {
     const [plateNumber, setPlateNumber] = useState('');
     const [parkingStrategy, setParkingStrategy] = useState('Standard');
     const [strategies, setStrategies] = useState([]);
+    const { state, dispatch } = useContext(ParkingContext);
 
     useEffect(() => {
         const fetchStrategies = async () => {
@@ -20,8 +22,20 @@ const ParkingLotOperator = () => {
         fetchStrategies();
     }, []);
 
-    const handlePark = () => {
-        console.log(`Plate Number: ${plateNumber}, Parking Strategy: ${parkingStrategy}`);
+    const handlePark = async () => {
+        const plateNumberPattern = /^[A-Z]{2}-\d{4}$/;
+        if (!plateNumberPattern.test(plateNumber)) {
+            alert('Invalid plate number format. (e.g., AB-1234).');
+            setPlateNumber('');
+            return;
+        }
+
+        try {
+            const response = await parkCar({ plateNumber }, parkingStrategy);
+            dispatch({ type: 'PARK_CAR', payload: response });
+        } catch (error) {
+            console.error('Error parking car:', error);
+        }
     };
 
     const handleFetch = () => {

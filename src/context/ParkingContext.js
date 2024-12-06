@@ -7,6 +7,15 @@ const parkingReducer = (state, action) => {
     switch (action.type) {
         case 'SET_PARKING_LOTS':
             return { ...state, parkingLots: action.payload };
+        case 'PARK_CAR':
+            const updatedParkingLots = state.parkingLots.map(lot => {
+                if (lot.id === action.payload.parkingLotId) {
+                    const updatedTickets = [...lot.tickets, action.payload];
+                    return { ...lot, tickets: updatedTickets };
+                }
+                return lot;
+            });
+            return { ...state, parkingLots: updatedParkingLots };
         default:
             return state;
     }
