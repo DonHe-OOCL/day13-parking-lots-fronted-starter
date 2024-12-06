@@ -1,0 +1,16 @@
+.parking-lot-operator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+.parking-lot-operator-element {
+    padding: 5px;
+}
+
+.parking-lot-operator-button {
+    background-color: #a7d9fe;
+    padding: 5px 10px;
+}

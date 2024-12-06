@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './css/ParkingLotOperator.css';
 
 const ParkingLotOperator = () => {
     const [plateNumber, setPlateNumber] = useState('');
@@ -13,8 +14,8 @@ const ParkingLotOperator = () => {
     };
 
     return (
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px', padding: '10px' }}>
-            <div style={{ padding: '5px' }}>
+        <div className="parking-lot-operator">
+            <div className="parking-lot-operator-element">
                 <label>
                     Plate Number:
                     <input
@@ -25,7 +26,7 @@ const ParkingLotOperator = () => {
                     />
                 </label>
             </div>
-            <div style={{ padding: '5px' }}>
+            <div className="parking-lot-operator-element">
                 <label>
                     Parking Strategy:
                     <select
@@ -39,18 +40,18 @@ const ParkingLotOperator = () => {
                     </select>
                 </label>
             </div>
-            <div style={{ padding: '5px' }}>
+            <div className="parking-lot-operator-element">
                 <button
                     onClick={handlePark}
-                    style={{ backgroundColor: '#a7d9te', padding: '5px 10px' }}
+                    className="parking-lot-operator-button"
                 >
                     Park
                 </button>
             </div>
-            <div style={{ padding: '5px' }}>
+            <div className="parking-lot-operator-element">
                 <button
                     onClick={handleFetch}
-                    style={{ backgroundColor: '#a7d9te', padding: '5px 10px' }}
+                    className="parking-lot-operator-button"
                 >
                     Fetch
                 </button>
