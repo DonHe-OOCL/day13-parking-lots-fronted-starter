@@ -23,6 +23,11 @@ const ParkingLotOperator = () => {
     }, []);
 
     const handlePark = async () => {
+        if (!plateNumber) {
+            alert('Plate number cannot be empty.');
+            return;
+        }
+
         const plateNumberPattern = /^[A-Z]{2}-\d{4}$/;
         if (!plateNumberPattern.test(plateNumber)) {
             alert('Invalid plate number format. (e.g., AB-1234).');
@@ -39,6 +44,11 @@ const ParkingLotOperator = () => {
     };
 
     const handleFetch = async () => {
+        if (!plateNumber) {
+            alert('Plate number cannot be empty.');
+            return;
+        }
+
         const plateNumberPattern = /^[A-Z]{2}-\d{4}$/;
         if (!plateNumberPattern.test(plateNumber)) {
             alert('Invalid plate number format. (e.g., AB-1234).');
