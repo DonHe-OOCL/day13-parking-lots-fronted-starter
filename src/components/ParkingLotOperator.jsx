@@ -1,4 +1,3 @@
-// src/components/ParkingLotOperator.jsx
 import React from 'react';
 
 const ParkingLotOperator = () => {
