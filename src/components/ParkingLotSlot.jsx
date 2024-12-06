@@ -1,5 +1,6 @@
 import React from 'react';
 import CarSlot from './CarSlot';
+import './css/ParkingLotSlot.css';
 
 const ParkingLotSlot = () => {
     const parkingLots = [
@@ -14,12 +15,12 @@ const ParkingLotSlot = () => {
             rows.push(cars.slice(i, i + columns));
         }
         return (
-            <table style={{ borderCollapse: 'collapse', margin: '10px' }}>
+            <table className="parking-lot-table">
                 <tbody>
                 {rows.map((row, rowIndex) => (
                     <tr key={rowIndex}>
                         {row.map((car, colIndex) => (
-                            <td key={colIndex} style={{ border: '1px solid black', width: '100px', height: '50px', textAlign: 'center' }}>
+                            <td key={colIndex} className="parking-lot-cell">
                                 {car ? <CarSlot plateNumber={car} /> : ''}
                             </td>
                         ))}
@@ -31,11 +32,11 @@ const ParkingLotSlot = () => {
     };
 
     return (
-        <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+        <div className="parking-lot-container">
             {parkingLots.map((lot, index) => {
                 const columns = Math.ceil(Math.sqrt(lot.capacity));
                 return (
-                    <div key={index} style={{ textAlign: 'center' }}>
+                    <div key={index} className="parking-lot">
                         {renderTable(lot.cars, columns)}
                         <div>{lot.name}</div>
                     </div>

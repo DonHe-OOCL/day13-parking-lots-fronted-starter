@@ -1,0 +1,20 @@
+.parking-lot-table {
+    border-collapse: collapse;
+    margin: 10px;
+}
+
+.parking-lot-cell {
+    border: 1px solid black;
+    width: 100px;
+    height: 50px;
+    text-align: center;
+}
+
+.parking-lot-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.parking-lot {
+    text-align: center;
+}
